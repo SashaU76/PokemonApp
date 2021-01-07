@@ -1,0 +1,29 @@
+.Cards {
+  display: inline-flex;
+  background: #555;
+  border: rgb(0, 0, 0) 1px solid;
+  color: #ddd;
+  justify-content: center;
+  margin: 5px;
+  min-width: 110px;
+}
+.Cards:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.815);
+  background: #666;
+  color: rgb(255, 255, 255);
+}
+.Header {
+  font-size: 23px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ff932f;
+  margin-bottom: 20px;
+}
+.Container {
+  font-family: serif;
+  font-size: 22px;
+}
+.page {
+  display: inline;
+  cursor: pointer;
+}

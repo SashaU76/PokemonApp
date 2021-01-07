@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PokemonContext from './context/PokemonContext';
+import { BrowserRouter } from 'react-router-dom';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter /* basename={process.env.PUBLIC_URL} */>
+    <PokemonContext>
+        <App />
+    </PokemonContext>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

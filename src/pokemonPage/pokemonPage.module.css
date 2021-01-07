@@ -1,0 +1,53 @@
+.Name {
+  background: tomato;
+  font-size: 36px;
+  text-shadow: rgb(0, 0, 0) 0 0 1px;
+  max-height: 80px;
+}
+.TextName {
+  transform: translateY(-20px);
+}
+.Wrapper {
+  padding: 50px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+.Content {
+  display: inline;
+}
+.Info {
+  display: inline-flex;
+  position: relative;
+  border: 1px solid black;
+  margin: 10px;
+  height: 250px;
+  max-width: 500px;
+  justify-content: center;
+  background: rgb(136, 136, 136);
+  border-radius: 10px;
+  float: left;
+}
+.BaseInfo {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  font-family: serif;
+  padding: 30px;
+  border-left: black 1px solid;
+  justify-content: center;
+}
+.Boxes {
+  height: 220px;
+  width: 400px;
+  border: 1px solid black;
+  margin: 10px;
+  background: rgb(136, 136, 136);
+  border-radius: 10px;
+}
+.Box {
+  display: inline;
+  float: left;
+}
+.ImgDiv {
+  margin: auto;
+}

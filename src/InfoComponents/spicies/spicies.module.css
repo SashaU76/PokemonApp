@@ -1,0 +1,31 @@
+.BaseInfo {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  font-family: serif;
+  padding: 0 30px;
+  justify-content: center;
+}
+.Box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding: 10px;
+  max-width: 450px;
+  justify-content: center;
+  background: rgb(136, 136, 136);
+  border-radius: 10px;
+  min-width: 400px;
+  font-family: serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+.Header {
+  font-family: MyFont2;
+  cursor: pointer;
+  font-size: 20px;
+}
+.StrongText {
+  margin: 4px;
+}
