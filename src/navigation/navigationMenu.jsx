@@ -3,11 +3,11 @@ import styles  from "./navigationMenu.module.css";
 import { IoArrowRedoCircleSharp, IoArrowUndoCircle} from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
 import Pagination from "react-js-pagination";
+import Backdrop from '../UI/Backdrop/Backdrop';
 
 
 
 const NavMenu = (props) => {
-    //debugger
     const [isMenuOpen, setMenuOpen]=useState(false)
     const [isListOpen, setListOpen]=useState(false)
     const [ NavData, setNavData ] = useState({results:[]})
@@ -15,7 +15,6 @@ const NavMenu = (props) => {
     
     
     useEffect(()=>{
-        //debugger
         setNavData(props.props);
     }, [props.props.results])
 
@@ -38,15 +37,13 @@ const NavMenu = (props) => {
 
     };
     const requestPokemonNav=(pageNumber)=>{
-    //this.setState({isLoading:true})
     let offset=pageNumber*20
     props.pokemonAPI.addPokemons(offset)
     .then(response => {
             setNavData(response.data)
-            //this.setState({isLoading:false})
         })
     }
-    
+
     return ( 
         <div className={isMenuOpen ? styles.Container :  styles.Hidden}>
             <div className={styles.Btn}>
@@ -59,19 +56,25 @@ const NavMenu = (props) => {
             <NavLink to={`/`}><h2 className={styles.ListH1}>home</h2></NavLink>
             <div className={styles.ListH1} onClick={toggleList}>list of pokemons</div>
                 <div className={styles.page}>
-                <Pagination
-                activeClass={styles.active}
-                activePage={ activePage }
-                itemsCountPerPage={ 20 }
-                totalItemsCount={ props.props.totalCount-20 }
-                pageRangeDisplayed={ 3}
-                onChange={ handlePageChange }
-                />
-                </div>
-                {NavData!=undefined?
-                <div className={isListOpen ? styles.List : styles.ListOpen}>{listOfPokemons}</div>
-                : null
+                {isListOpen ?
+                    <div>
+                        <Pagination
+                        activeClass={styles.active}
+                        activePage={ activePage }
+                        itemsCountPerPage={ 20 }
+                        totalItemsCount={ props.props.totalCount-20 }
+                        pageRangeDisplayed={ 3}
+                        onChange={ handlePageChange }
+                        />
+                        {NavData!=undefined?
+                        <div className={isListOpen ? styles.ListOpen: styles.List }>{listOfPokemons}</div>
+                        : null
+                        }
+                    </div>
+                    :null
                 }
+                </div>
+                <Backdrop onClick={toggleNav}/>
         </div>
     );
 }

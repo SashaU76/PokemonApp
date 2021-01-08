@@ -28,7 +28,6 @@ const About = (props) => {
     })
     let toggleOpen=()=>{
         setOpen(!isItOpen)
-        //if(!isItOpen)setAbilities(null)
     }
 
     return ( 
@@ -45,5 +44,5 @@ const About = (props) => {
         </div>
     );
 }
- 
+
 export default About;

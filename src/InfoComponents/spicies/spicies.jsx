@@ -6,7 +6,6 @@ const Spicies = (props) => {
 
     const [isItOpen, setOpen]= useState(false)
     const [spicies, setSpicies]= useState(null)
-    const [currentPoint, setCurrent]= useState()
     
     useEffect(()=>{
         requestSpicies()
@@ -18,12 +17,7 @@ const Spicies = (props) => {
             setSpicies(response.data)
         })
     }
-    /* let speciesItem = props.abilities.map((e)=>{
-        //debugger
-        return (
-            <div onClick={()=>{requestSpicies(e.ability.url)}} key={uuidv4()} className={styles.AbilityItem}>{e.ability.name}</div>
-        )
-    }) */
+    
     let toggleOpen=()=>{
         requestSpicies()
         setOpen(!isItOpen)
@@ -45,22 +39,8 @@ const Spicies = (props) => {
             </div>
             : null
             }
-            {/*{ isItOpen ?
-                <div>
-                    <div >{abilityItem}</div>
-                    {abilities ?
-                    <div>
-                        <div className={styles.StrongText}>Effect: </div>{abilities.effect}<br/>
-                        <div className={styles.StrongText}>Short Effect: </div>{abilities.short_effect}
-                    </div>
-                    : null
-                    }
-                </div>
-                : null
-            }
-             */}
         </div>
-     );
+    );
 }
- 
+
 export default Spicies;

@@ -9,12 +9,7 @@ const Abilities = (props) => {
     const [abilities, setAbilities]= useState(null)
     const [currentPoint, setCurrent]= useState()
     const [isLoading, setLoading]= useState(false)
-    /*useEffect(()=>{
-        props.pokemonAPI.getPokemon(currentPokemon)
-        .then(response => {
-            setPokInfo(response.data)
-        }).then(()=>{console.log(abilities);})
-    }, [props.currentPokemon]) */
+    
     const requestAbility=(url)=>{
         setLoading(true)
         props.pokemonAPI.getAdditional(url)
@@ -27,7 +22,6 @@ const Abilities = (props) => {
         })
     }
     let abilityItem = props.abilities.map((e)=>{
-        //debugger
         return (
             <div onClick={()=>{requestAbility(e.ability.url)}} key={uuidv4()} className={styles.AbilityItem}>{e.ability.name}</div>
         )
@@ -59,7 +53,7 @@ const Abilities = (props) => {
             }
             
         </div>
-     );
+    );
 }
- 
+
 export default Abilities;

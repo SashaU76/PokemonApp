@@ -5,7 +5,7 @@ import MainPage from './mainPage/mainPage';
 import {ThemeContext} from './context/PokemonContext';
 import { pokemonAPI } from "./api/pokemonApi";
 import Loader from './UI/Loader/Loader';
-import { Route} from 'react-router-dom';
+import { NavLink, Route} from 'react-router-dom';
 import PokemonPage from './pokemonPage/pokemonPage';
 
 
@@ -15,8 +15,6 @@ class App extends React.Component {
     isLoading: false
   }
   requestPokemon=()=>{
-    
-    //this.context.value.countAddPokemons
     this.setState({isLoading:true})
     pokemonAPI.addPokemons(this.context.countAddPokemons)
     .then(response => {
@@ -29,10 +27,9 @@ class App extends React.Component {
     this.requestPokemon()
   }
   render(){
-    //debugger
     return (
       <div className="App">
-        <h1>juniortest</h1>
+        <NavLink to={`/`}><h1>juniortest</h1></NavLink>
         <NavMenu props={this.context} pokemonAPI={pokemonAPI}/>
         <div className="contentPart">
           { this.state.isLoading ? <Loader />
@@ -42,7 +39,7 @@ class App extends React.Component {
             </ThemeContext.Consumer>}
             <Route path='/pokemon/:id'><PokemonPage pokemonAPI={pokemonAPI}/> </Route>
         </div>
-        <div className="footer">я в соц сетях</div> 
+        <div className="footer"><a href='https://github.com/SashaU76' ><img src="https://image.flaticon.com/icons/png/512/25/25231.png"  width="50" height="50" alt="git logo"/></a></div> 
       </div>
     );
   }

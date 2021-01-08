@@ -7,7 +7,7 @@
   max-width: 250px;
   transition: 0.33s;
   color: #ff932f;
-  z-index: 10;
+  z-index: 20;
 }
 .Hidden {
   background: #aaaa;
