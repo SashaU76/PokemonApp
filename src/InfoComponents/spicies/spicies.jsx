@@ -1,32 +1,20 @@
 import  styles  from "./spicies.module.css";
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import useThunkReducer from "react-hook-thunk-reducer";
+import reducer, {requestSpicies, toggleMenu} from "../../reducer/reducer";
 
-const Spicies = (props) => {
-
-    const [isItOpen, setOpen]= useState(false)
-    const [spicies, setSpicies]= useState(null)
+const Spicies = React.memo((props) => {
+    const [spicies, dispatch] = useThunkReducer(reducer, {isItOpen:false});
     
     useEffect(()=>{
-        requestSpicies()
+        dispatch(requestSpicies(props.pokemonId))
     },[props.pokemonId])
-
-    const requestSpicies=()=>{
-        props.pokemonAPI.getSpecies(props.pokemonId)
-        .then(response =>{
-            setSpicies(response.data)
-        })
-    }
-    
-    let toggleOpen=()=>{
-        requestSpicies()
-        setOpen(!isItOpen)
-    }
 
     return ( 
         <div className={styles.Box}>
-            <div className={styles.Header} onClick={()=>{toggleOpen()}}>Spicies</div>
-            { isItOpen ?
+            <div className={styles.Header} onClick={()=>{dispatch(toggleMenu())}}>Spicies</div>
+            { spicies.isItOpen ?
             <div className={styles.BaseInfo}>
                 <div className={styles.StrongText}>Base happines: </div>{spicies.base_happiness}<br/>
                 <div className={styles.StrongText}>Capture rate: </div>{spicies.capture_rate}<br/>
@@ -41,6 +29,6 @@ const Spicies = (props) => {
             }
         </div>
     );
-}
+})
 
 export default Spicies;

@@ -5,17 +5,16 @@ import Spicies from '../InfoComponents/spicies/spicies';
 import Loader from '../UI/Loader/Loader';
 import  styles  from "./pokemonPage.module.css";
 import About from '../InfoComponents/forms/about'
+import useThunkReducer from 'react-hook-thunk-reducer';
+import reducer, { requestPok } from '../reducer/reducer';
 
 
-const PokemonPage = (props) => {
-    const [pokInfo, setPokInfo]= useState([])
-    let pokemonId=props.match.params.id
+const PokemonPage = React.memo((props) => {
+    console.log('перерисовка PokemonPage');
+    const [pokInfo, dispatch] = useThunkReducer(reducer, []);
+    
     useEffect(()=>{
-        
-        props.pokemonAPI.getPokemon(pokemonId)
-        .then(response => {
-            setPokInfo(response.data)
-        })
+        dispatch(requestPok(props.match.params.id)) 
     }, [props.match.params.id])
 
     return ( <>
@@ -50,7 +49,7 @@ const PokemonPage = (props) => {
         }
         </>
     );
-}
+})
  
 
 export default withRouter(PokemonPage);

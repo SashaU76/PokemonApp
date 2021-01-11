@@ -7,7 +7,6 @@ const instance = axios.create({
 
 export const pokemonAPI ={
     addPokemons (countAddPokemons) {
-        //debugger
         return instance.get(`pokemon/?limit=20&offset=${countAddPokemons}`)
     },
     getPokemon(Id){
